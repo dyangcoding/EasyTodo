@@ -22,7 +22,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li><a href="home.html">MyToDos</a></li>
-                <li class="active"><a href="#">AddToDo</a></li>
+                <li class="active"><a href="#">New</a></li>
                 <li><a href="edit.html">Edit</a></li>
                 <li><a href="impressum.html">Impressum</a></li>
             </ul>
@@ -30,35 +30,26 @@
     </div>
 </nav>
 <div class="container">
+    <div class="col-xs-offset-1 col-xs-10 col-sm-offset-3 col-sm-6">
     <form>
         <div class="form-group">
-            <div class="col-sm-7">
-                <label for="todo">Todo:</label>
-                <textarea class="form-control" rows="2" id="toDoInput" placeholder="add new todo here"
-                          maxlenght="160"></textarea>
-            </div>
+            <label for="todo">Todo:</label>
+            <textarea id="todo" class="form-control" rows="2" id="toDoInput" placeholder="Write your new todo here" maxlenght="160"></textarea>
         </div>
 
-        <div class="col-sm-7">
+        <div class="form-group">
             <label for="deadline">Deadline:</label>
-            <input class="form-control" type="date" value="2015-04-27"/>
+            <input id="deadline" class="form-control" type="date" value="2015-04-27"/>
         </div>
 
-        <div class="col-sm-7">
+        <div class="form-group">
             <label for="doneInprocent">DoneInProcent:</label>
-            <input class="form-control" placeholder="0%" type="number" min="0" max="100" value="0"/>
+            <input id="doneInprocent" class="form-control" placeholder="0%" type="number" min="0" max="100" value="0"/>
         </div>
 
-        <div class="col-sm-7">
-            <div>
-                </br>
-
-                <a href="home.html" class="btn btn-primary btn-lg">Create</a>
-            </div>
-        </div>
+        <a href="home.html" class="btn btn-primary btn-lg">Create</a>
     </form>
-
-    <p>balbal</p>
+    </div>
 </div>
 </body>
 </html>

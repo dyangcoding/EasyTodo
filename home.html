@@ -23,7 +23,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">MyToDos</a></li>
-                <li><a href="new.html">AddToDo</a></li>
+                <li><a href="new.html">New</a></li>
                 <li><a href="edit.html">Edit</a></li>
                 <li><a href="impressum.html">Impressum</a></li>
             </ul>
@@ -31,56 +31,62 @@
     </div>
 </nav>
 <div class="container">
-    <h3>Hier sind alle ihre ToDos aufgelistet. </h3>
+    <h3>Here are all your todos</h3>
     </br>
     <div class="table-responsive">
-
-        <table class="table-condensed ">
+        <table class="table table-condensed table-hover">
+            <thead>
             <tr>
                 <th>ToDo</th>
                 <th>Deadline</th>
                 <th>Done in Percent</th>
+                <th></th>
+                <th></th>
             </tr>
-
+            </thead>
+            <tbody>
             <tr>
                 <td>Beispielseite mit Bootstrap Framework anlegen</td>
                 <td>26. April 2015</td>
                 <td>0 %</td>
-                <td><a href="edit.html" class="btn btn-primary">Bearbeiten</a></td>
-                <td><a href="" class="btn btn-warning">Löschen</a></td>
+                <td><a href="edit.html" class="pull-right btn btn-primary">Edit</a></td>
+                <td><a href="" class="btn btn-warning">Delete</a></td>
             </tr>
 
             <tr>
                 <td>Androidprojekt mit Hilfe von Ionic anlegen</td>
                 <td>2. Mai 2015</td>
                 <td>30 %</td>
-                <td><a href="edit.html" class="btn btn-primary">Bearbeiten</a></td>
-                <td><a href="" class="btn btn-warning">Löschen</a></td>
+                <td><a href="edit.html" class="pull-right btn btn-primary">Edit</a></td>
+                <td><a href="" class="btn btn-warning">Delete</a></td>
             </tr>
 
             <tr>
                 <td>Erstes Projekt von AngularJS</td>
                 <td>26. Juni 2015</td>
                 <td>0 %</td>
-                <td><a href="edit.html" class="btn btn-primary">Bearbeiten</a></td>
-                <td><a href="" class="btn btn-warning">Löschen</a></td>
+                <td><a href="edit.html" class="pull-right btn btn-primary">Edit</a></td>
+                <td><a href="" class="btn btn-warning">Delete</a></td>
             </tr>
 
             <tr>
                 <td>Anschreiben anfertigen</td>
                 <td>23. April 2015</td>
                 <td>70%</td>
-                <td><a href="edit.html" class="btn btn-primary">Bearbeiten</a></td>
-                <td><a href="" class="btn btn-warning">Löschen</a></td>
+                <td><a href="edit.html" class="pull-right btn btn-primary">Edit</a></td>
+                <td><a href="" class="btn btn-warning">Delete</a></td>
             </tr>
 
             <tr>
                 <td>Lebenslauf erstellen</td>
                 <td>26. Juni 2015</td>
                 <td>0 %</td>
-                <td><a href="edit.html" class="btn btn-primary">Bearbeiten</a></td>
-                <td><a href="" class="btn btn-warning">Löschen</a></td>
+                <td><a href="edit.html" class="pull-right btn btn-primary">Edit</a></td>
+                <td><a href="" class="btn btn-warning">Delete</a></td>
             </tr>
+
+            
+            </tbody>
         </table>
     </div>
 </div>
