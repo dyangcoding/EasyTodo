@@ -1,11 +1,8 @@
-__author__ = 'fabian082'
-from django.conf.urls import patterns, url
-from EasyTodoLib import views
+from django.conf.urls import url
 
-urlpatterns = patterns('',
-	url(r'^$',views.IndexView.as_view()),
-	url(r'^create$', views.CreateToDo.as_view()),
+from . import views
 
-
-
-	)
+urlpatterns = [
+    url(r'^$', views.index.as_view()),
+    url(r'^create$', views.create.as_view()),
+]
