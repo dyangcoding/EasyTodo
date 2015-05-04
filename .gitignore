@@ -2,6 +2,8 @@
 
 /db.sqlite3
 
+/.idea/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
