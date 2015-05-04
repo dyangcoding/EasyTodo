@@ -30,58 +30,36 @@
 			</div>	
 		</nav>	
 		<div class="container">
-		<h3>Hier sind alle ihre ToDos aufgelistet. </h3>
-		</br>
-		<div class="table-responsive">
-			
-			<table class="table-condensed ">
-				<tr>
-					<th>ToDo</th>
-					<th>Deadline</th>
-					<th>Done in Percent</th>
-				</tr>
-				
-				<tr>
-					<td>Beispielseite mit Bootstrap Framework anlegen</td>
-					<td>26. April 2015</td>
-					<td>0 %</td>
-					<td><a href="edit.html" class="btn btn-primary">Bearbeiten</a></td>
-					<td><a href="" class="btn btn-warning">Löschen</a></td>
-				</tr>
-			
-				<tr>
-					<td>Androidprojekt mit Hilfe von Ionic anlegen</td>
-					<td>2. Mai 2015</td>
-					<td>30 %</td>
-					<td><a href="edit.html" class="btn btn-primary">Bearbeiten</a></td>
-					<td><a href="" class="btn btn-warning">Löschen</a></td>
-				</tr>
-				
-				<tr>
-					<td>Erstes Projekt von AngularJS </td>
-					<td>26. Juni 2015</td>
-					<td>0 %</td>
-					<td><a href="edit.html" class="btn btn-primary">Bearbeiten</a></td>
-					<td><a href="" class="btn btn-warning">Löschen</a></td>
-				</tr>
-				
-				<tr>
-					<td>Anschreiben anfertigen </td>
-					<td>23. April 2015</td>
-					<td>70%</td>
-					<td><a href="edit.html" class="btn btn-primary">Bearbeiten</a></td>
-					<td><a href="" class="btn btn-warning">Löschen</a></td>
-				</tr>
-				
-				<tr>
-					<td>Lebenslauf erstellen</td>
-					<td>26. Juni 2015</td>
-					<td>0 %</td>
-					<td><a href="edit.html" class="btn btn-primary">Bearbeiten</a></td>
-					<td><a href="" class="btn btn-warning">Löschen</a></td>
-				</tr>
-			</table>
-			</div>
+            {% block content %}
+            <h3>Here are all your todos</h3>
+            </br>
+            <div class="table-responsive">
+                <table class="table table-condensed table-hover">
+                    <thead>
+                    <tr>
+                        <th>ToDo</th>
+                        <th>Deadline</th>
+                        <th>Done in Percent</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for ToDo in object_list %}
+                    <tr>
+                        <td>{{ToDo.title}}</td>
+                        <td>{{ToDo.deadline}}</td>
+                        <td>{{ToDo.doneInPercent}}</td>
+                        <td></td>
+
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endblock %}
+            </div>
 		</div>
 		
 	</body>
