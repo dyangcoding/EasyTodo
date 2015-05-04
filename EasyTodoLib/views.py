@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import CreateView
 from django.views.generic import ListView
-from EasyToDoLib.models import ToDo
+from EasyTodoLib.models import ToDo
 # Create your views here.
 
 class IndexView(ListView):
