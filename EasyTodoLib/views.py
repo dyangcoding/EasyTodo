@@ -1,15 +1,16 @@
-from django.views.generic import CreateView
-
-from django.views.generic import ListView
-
-from EasyTodoLib.models import ToDo
+from django.http import HttpResponse
+from .models import Todo
+from django.template import RequestContext, loader
 
 
-class index(ListView):
-    template_name = 'index.html'
-    model = ToDo
+def index(request):
+    todos = Todo.objects.all()
+    template = loader.get_template('index.html')
+    context = RequestContext(request, {
+        'todos': todos,
+    })
+    return HttpResponse(template.render(context))
 
-class create(CreateView):
-    template_name = 'new.html'
-    model = ToDo
-    success_url = '/'
+
+def create(request):
+    pass
