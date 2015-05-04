@@ -1,7 +1,9 @@
-from django.conf.urls import include, url
+from django.conf.urls import include, url,patterns
 from django.contrib import admin
+from EasyTodoLib.views import index, create
 
-urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^todos/', include('EasyTodoLib.urls'))
-]
+urlpatterns = patterns('',
+    url(r'^admin/', admin.site.urls),
+    url(r'^', include('EasyTodoLib.urls')),
+    )
+
