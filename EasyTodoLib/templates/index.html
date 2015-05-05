@@ -1,8 +1,42 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {% for todo in todos %}
-        {{ todo.title }}
-    {% endfor %}
+    <div class="table-responsive">
+    <table class="table table-condensed table-hover">
+        <thead>
+        <tr>
+            <th>ToDo</th>
+            <th>Deadline</th>
+            <th>Done in Percent</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+
+
+        {% for todo in todos %}
+            <tr>
+                <td>{{ todo.title }}</td>
+                <td>{{ todo.deadline }}</td>
+                <td>{{ todo.done }}</td>
+
+            </tr>
+
+        {% empty %}
+            <tr>
+                <td class="text-center" colspan="5">There are no todos yet.</td>
+            </tr>
+
+
+
+        {% endfor %}
+
+
+        </tbody>
+    </table>
 
 {% endblock %}
+</div>
+
+
