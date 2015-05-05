@@ -46,11 +46,11 @@
                     </thead>
                     <tbody>
 
-                    {% for todo in todos_list %}
+                    {% for todo in todos %}
                     <tr>
                         <td>{{todo.title}}</td>
                         <td>{{todo.deadline}}</td>
-                        <td>{{todo.doneInPercent}}</td>
+                        <td>{{todo.done}}</td>
                         <td></td>
                         <td></td>
                     </tr>
