@@ -5,7 +5,15 @@
         {% for todo in todos %}
             <div class="col-xs-12 col-sm-3 col-lg-5">{{ todo.title }}</div>
             <div class="col-xs-6 col-sm-2">{{ todo.deadline }}</div>
-            <div class="col-xs-6 col-sm-3">{{ todo.done }}</div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="progress">
+                    <div class="progress-bar{% if todo.done == 100 %} progress-bar-success {% endif %}"
+                         role="progressbar" aria-valuenow="{{ todo.done }}" aria-valuemin="0"
+                         aria-valuemax="100" style="width: {{ todo.done }}%;">
+                        {{ todo.done }}%
+                    </div>
+                </div>
+            </div>
 
             <div class="col-xs-6 col-sm-2 col-lg-1">
                 <a class="btn btn-primary btn-block" href="">Edit</a>
@@ -14,9 +22,9 @@
                 <a class="btn btn-danger btn-block" href="">Delete</a>
             </div>
             {% if not forloop.last %}
-            <div class="col-xs-12">
-                <hr/>
-            </div>
+                <div class="col-xs-12">
+                    <hr/>
+                </div>
             {% endif %}
         {% empty %}
             <div class="col-xs-12">
