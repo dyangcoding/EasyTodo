@@ -1,23 +1,29 @@
-from django.forms import BaseForm
+from django.core.urlresolvers import reverse
 from django.http import HttpResponse
-from django.shortcuts import render_to_response
-from django.template import RequestContext, loader
+from django.template import loader
+from django.views.generic import ListView, CreateView
 
-from .models import Todo
-
-
-def index(request):
-    todos = Todo.objects.all()
-    template = loader.get_template('index.html')
-    context = RequestContext(request, {
-        'todos': todos,
-    })
-    return HttpResponse(template.render(context))
+from EasyTodoLib.models import Todo
 
 
-def new(request):
-    form = BaseForm()
-    return render_to_response('new.html', {'form': form}, context_instance=RequestContext(request))
+class TodosIndex(ListView):
+    model = Todo
+    template_name = 'index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(TodosIndex, self).get_context_data(**kwargs)
+        context['todos'] = self.model.objects.order_by('deadline')
+        return context
+
+
+class TodosCreate(CreateView):
+    model = Todo
+    fields = ['title', 'deadline', 'done']
+    template_name = 'new.html'
+    success_url = 'index'
+
+    def get_success_url(self):
+        return reverse('index')
 
 
 def impressum(request):
