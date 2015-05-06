@@ -14,3 +14,8 @@ def index(request):
 
 def create(request):
     pass
+
+
+def impressum(request):
+    template = loader.get_template('impressum.html')
+    return HttpResponse(template.render())
