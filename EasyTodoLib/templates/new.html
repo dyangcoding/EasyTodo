@@ -3,12 +3,12 @@
 {% block content %}
 
     <div class="col-xs-offset-1 col-xs-10 col-sm-offset-3 col-sm-6">
-        <form action="{% url 'create' %}" method="POST">
+        <form action="" method="POST">
             {% csrf_token %}
             <div class="form-group">
                 <label for="todo">Title:</label>
                 <textarea class="form-control" rows="2" id="todo" placeholder="Write your new todo here"
-                          maxlenght="128" required name="todo"></textarea>
+                          maxlenght="128" required name="title"></textarea>
             </div>
 
             <div class="form-group">
