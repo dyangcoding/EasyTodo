@@ -10,3 +10,5 @@ urlpatterns = [
     url(r'^(?P<pk>\d+)/delete/$', TodosDelete.as_view(), name='delete'),
     url(r'^impressum$', views.impressum, name='impressum')
 ]
+
+handler404 = 'views.custom404'
