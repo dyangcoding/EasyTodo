@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        {% for todo in todos %}
+            <div class="col-xs-12 col-sm-3 col-lg-5">{{ todo.title }}</div>
+            <div class="col-xs-6 col-sm-2">{{ todo.deadline }}</div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="progress">
+                    <div class="progress-bar{% if todo.done > 90 %} progress-bar-success {% endif %}"
+                         role="progressbar" aria-valuenow="{{ todo.done }}" aria-valuemin="0"
+                         aria-valuemax="100" style="width: {{ todo.done }}%;">
+                        {{ todo.done }}%
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6 col-sm-2 col-lg-1">
+                <a class="btn btn-primary btn-block" href="{% url 'edit' pk=todo.pk %}">Edit</a>
+            </div>
+            <div class="col-xs-6 col-sm-2 col-lg-1">
+                <a class="btn btn-danger btn-block" href="{% url 'delete' pk=todo.pk %}">Delete</a>
+            </div>
+            {% if not forloop.last %}
+                <div class="col-xs-12">
+                    <hr/>
+                </div>
+            {% endif %}
+        {% empty %}
+            <div class="col-xs-12">
+                There are no Todos.<br/>
+                <a href="/new">Create one</a>.
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

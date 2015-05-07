@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}New - {% endblock %}
+
+{% block content %}
+
+    <div class="col-xs-offset-1 col-xs-10 col-sm-offset-3 col-sm-6">
+
+        {% if form.errors %}
+            <div class="alert alert-danger" role="alert">There is an error in your todo.</div>
+        {% endif %}
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="form-group{% if 'title' in form.errors %} has-error{% endif %}">
+                <label for="todo">Title:</label>
+                <textarea class="form-control" rows="2" id="todo" placeholder="Write your new todo here"
+                          maxlenght="128" required name="title">{% if form.title.value %}{{ form.title.value }}{% endif %}</textarea>
+            </div>
+
+            <div class="form-group{% if 'deadline' in form.errors %} has-error{% endif %}">
+                <label for="deadline">Deadline:</label>
+                <input id="deadline" class="form-control" type="date" name="deadline" required
+                       value="{% if form.deadline.value %}{{ form.deadline.value }}{% else %}{% now "Y-m-d" %}{% endif %}"/>
+            </div>
+
+            <div class="form-group{% if 'done' in form.errors %} has-error{% endif %}">
+                <label for="done">Done in %:</label>
+                <input id="done" class="form-control" placeholder="0%" type="number" min="0" max="100" name="done"
+                       required value="{% if form.done.value %}{{ form.done.value }}{% endif %}"/>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Create</button>
+        </form>
+    </div>
+
+{% endblock %}
