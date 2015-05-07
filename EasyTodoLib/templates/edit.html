@@ -1,33 +1,38 @@
-<!DOCTYPE html>
-<head>
-    <title>EasyToDo</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-</head>
-<body>
-<nav class="navbar navbar-inverse">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">EasyToDo</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li><a href="home.html">MyToDos</a></li>
-                <li><a href="create.html">AddToDo</a></li>
-                <li class="active"><a href="#">Edit</a></li>
-                <li><a href="impressum.html">Impressum</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block title %}{{ todo.title }} - {% endblock %}
+
+{% block content %}
+
+    <div class="col-xs-offset-1 col-xs-10 col-sm-offset-3 col-sm-6">
+
+        {% if form.errors %}
+            <div class="alert alert-danger" role="alert">There is an error in your todo.</div>
+        {% endif %}
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="form-group{% if 'title' in form.errors %} has-error{% endif %}">
+                <label for="todo">Title:</label>
+                <textarea class="form-control" rows="2" id="todo" placeholder="Write your new todo here"
+                          maxlenght="128" required name="title">{{ todo.title }}</textarea>
+            </div>
+
+            <div class="form-group{% if 'deadline' in form.errors %} has-error{% endif %}">
+                <label for="deadline">Deadline:</label>
+                <input id="deadline" class="form-control" type="date" value="{{ todo.deadline | date:"Y-m-d" }}"
+                       name="deadline" required/>
+            </div>
+
+            <div class="form-group{% if 'done' in form.errors %} has-error{% endif %}">
+                <label for="done">Done in %:</label>
+                <input id="done" class="form-control" placeholder="0%" type="number" min="0" max="100" name="done"
+                       required value="{{ todo.done }}"/>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Update</button>
+            <a class="btn btn-warning" href="{% url 'index' %}">Cancel</a>
+        </form>
+    </div>
+
+{% endblock %}

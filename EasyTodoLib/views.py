@@ -1,9 +1,11 @@
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponse
 from django.template import loader
-from django.views.generic import ListView, CreateView, RedirectView
+from django.views.generic import ListView, CreateView, RedirectView, UpdateView
 
 from EasyTodoLib.models import Todo
+
+todoFields = ['title', 'deadline', 'done']
 
 
 class TodosIndex(ListView):
@@ -18,9 +20,18 @@ class TodosIndex(ListView):
 
 class TodosCreate(CreateView):
     model = Todo
-    fields = ['title', 'deadline', 'done']
+    fields = todoFields
     template_name = 'new.html'
     success_url = reverse_lazy('index')
+
+
+class TodosEdit(UpdateView):
+    model = Todo
+    fields = todoFields
+    template_name = 'edit.html'
+
+    def get_success_url(self):
+        return reverse_lazy('index')
 
 
 class TodosDelete(RedirectView):
