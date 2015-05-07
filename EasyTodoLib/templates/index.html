@@ -19,7 +19,7 @@
                 <a class="btn btn-primary btn-block" href="">Edit</a>
             </div>
             <div class="col-xs-6 col-sm-2 col-lg-1">
-                <a class="btn btn-danger btn-block" href="">Delete</a>
+                <a class="btn btn-danger btn-block" href="{% url 'delete' pk=todo.pk %}">Delete</a>
             </div>
             {% if not forloop.last %}
                 <div class="col-xs-12">

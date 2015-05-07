@@ -1,7 +1,7 @@
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponse
 from django.template import loader
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, RedirectView
 
 from EasyTodoLib.models import Todo
 
@@ -20,10 +20,16 @@ class TodosCreate(CreateView):
     model = Todo
     fields = ['title', 'deadline', 'done']
     template_name = 'new.html'
-    success_url = 'index'
+    success_url = reverse_lazy('index')
 
-    def get_success_url(self):
-        return reverse('index')
+
+class TodosDelete(RedirectView):
+    model = Todo
+
+    def get_redirect_url(self, pk=None):
+        if pk != None:
+            Todo.objects.get(pk=pk).delete()
+            return reverse_lazy('index')
 
 
 def impressum(request):
